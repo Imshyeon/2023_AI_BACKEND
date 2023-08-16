@@ -1,0 +1,247 @@
+Django start -> 앱 만들기 -> 모델 정의 -> 마이그레이션 -> 플래시 메시지
+-> 장고 관리자 -> 장고 레이아웃 및 폼 양식 -> 템플릿 만들기
+-> 편집 폼 및 레이아웃 -> 삭제 폼 레이아웃 -> 로그인/로그아웃
+===================================================
+장고 클래스 기반
+    listview 목록 표시 -> listview 목록 세부 표시 -> update view
+    -> CreateView 폼 만들기 -> Formview 폼 등록하기 -> LoginView
+    +암호 재설정 활성화, 사용자 프로필 추가
+===================================================
+
+blog << 모델정의 -> 마이그레이션 >>
+모델을 변경하고(table) 마이그레이션을 생성(db CRUD)하고 변경사항을 데이터베이스에 적용하는 프로세스
+1. 새 모델을 정의하거나 기존 모델을 변경 (새로운 테이블을 생성하거나 수정할 때)
+2. 명령을 실행하여 새 마이그레이션을 수행 makemigrations (새로운 db 생성)
+3. 명령을 실행하여 모델의 변경 사항을 데이터베이스에 적용 migrate. (table 생성 또는 수정 -> 기존 db)
+
+<django-admin의 db 관련 명령어>
+1. makemigrations : db 새로 생성
+2. migrate : 생성된 db에 table 수정
+3. sqlflush
+4. sqlmigrate : sql 미리 보기 => 쿼리 출력
+5. sqlsequencereset
+
+    ex) 1. 모델 정의
+        blog.models.py는 Django.db.models.Model의 하위클래스 및 필드가 명시되어야 한다.
+            - 상속해서 클래스를 생성 / DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+            - __str__ 문자열 표현 재정의 메소드
+            - class Meta 구성
+    ex) 1-1. 내장 모델과 함꼐 사용한다. 참조키를 생성했다.
+         django.contrib.auth.models import User
+
+
+    ex) 2. 마이그레이션
+        2-1. 새 마이그레이션 생성 : python manage.py makemigrations
+            => 결과)
+             Migrations for 'blog':                   // 어플리케이션 이름
+                blog\migrations\0001_initial.py     // 어플리케이션/migration/파일
+                   - Create model Post
+
+        2-2. sql구문 미리보기 : python manage.py sqlmigrate blog 0001
+            => 결과)
+            BEGIN;
+            --
+            -- Alter field published_at on post
+            --
+            CREATE TABLE "new__blog_post" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "published_at" datet
+            ime NOT NULL, "title" varchar(120) NOT NULL, "content" text NOT NULL, "author_id" integer NOT NULL R
+            EFERENCES "auth_user" ("id") DEFERRABLE INITIALLY DEFERRED);
+            INSERT INTO "new__blog_post" ("id", "title", "content", "author_id", "published_at") SELECT "id", "t
+            itle", "content", "author_id", "published_at" FROM "blog_post";
+            DROP TABLE "blog_post";
+            ALTER TABLE "new__blog_post" RENAME TO "blog_post";
+            CREATE INDEX "blog_post_author_id_dd7a8485" ON "blog_post" ("author_id");
+            COMMIT;
+
+
+        2-3. 변경 사항을 데이터베이스에 적용 :
+            => 결과)
+            Operations to perform:
+              Apply all migrations: admin, auth, blog, contenttypes, sessions
+            Running migrations:
+              Applying blog.0002_alter_post_published_at... OK
+
+
+        2-4. 프로젝트에서 해당 마이그레이션의 상태를 나열해보자 : python manage.py showmigrations
+            => 결과)
+                admin
+                 [X] 0001_initial
+                 [X] 0002_logentry_remove_auto_add
+                 [X] 0003_logentry_add_action_flag_choices
+                 auth
+                 [X] 0001_initial
+                 [X] 0002_alter_permission_name_max_length
+                 [X] 0003_alter_user_email_max_length
+                 [X] 0004_alter_user_username_opts
+                 [X] 0005_alter_user_last_login_null
+                 [X] 0006_require_contenttypes_0002
+                 [X] 0007_alter_validators_add_error_messages
+                 [X] 0008_alter_user_username_max_length
+                 [X] 0009_alter_user_last_name_max_length
+                 [X] 0010_alter_group_name_max_length
+                 [X] 0011_update_proxy_permissions
+                 [X] 0012_alter_user_first_name_max_length
+                blog
+                 [X] 0001_initial
+                contenttypes
+                 [X] 0001_initial
+                 [X] 0002_remove_content_type_name
+                notice
+                 (no migrations)
+                sessions
+                 [X] 0001_initial
+
+
+if) no changes detected가 나온다면.. -> 모델변경이 안됐다.(세션, 브라우저에 남았다)
+                                   -> 앱이 지정되지 않았다.
+                                   -> INSTALLED_APPS에 등록된 앱이 인식하지 못할 경우
+                                   -> 마이그레이션 파일이 이미 있다. => 더이상 뭐 할 게 없다.
+                                   -> 모델 정의 오류(대소문자나..뭐..)
+                                   -> 수동으로 삭제할 경우 ,,,
+
+========================================================================================
+장고 관리자
+ - 관리자 페이지에 모델을 표시하려면 admin.py에 Post(Model) 속성값을 추가해야한다.
+ 1. admin.site.register(Post) : 테이블 등록
+ 2. 127.0.0.1:8000/admin으로 접속 blog/post 확인 후 게시물 등록
+ 3. 등록된 게시물을 표시한다. blog.views.py에 표시하자
+ 4. settings.py에 TEMPLATES = ['DIRS': [BASE_DIR/'templates'],] 추가
+
+
+=====================================================
+장고 레이아웃 및 폼양식 : django.forms.Form 클래스를 상속 , django.forms.ModelForm
+1) 앱 디렉토리/forms.py 생성 => blog.forms.py 파일생성
+2) django.forms.ModelForm 임포트
+3) class PostForm(ModelForm):
+        class Meta : 클래스를 생성
+4) PostForm 경로를 url패턴에 등록. blog.urls.py에 등록
+    => path('post/create', views.create_post, name="post-create"),
+5) create_post() 함수를 통해 코드를 작성. blog.views.py
+5-1) post_form.html 에서 {% csrf_token %} 은 위조방지를 위한 것. settings의 middleware참고.
+    forms.ModelForm을 {{ form.as_p }}가 끌고 온다. => forms.PostForm.Meta의 field값을 인식해서 알아서 <p> 만들고... input 만들고..
+    - {{ form.as_div }} will render them wrapped in <div> tags.
+    - {{ form.as_table }} will render them as table cells wrapped in <tr> tags.
+    - {{ form.as_p }} will render them wrapped in <p> tags.
+    - {{ form.as_ul }} will render them wrapped in <li> tags.
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+
+8/11 : 편집 폼 및 레이아웃, 삭제 폼 레이아웃
+
+1) Url 패턴 만들고 views.py에 함수를 만든다. (Model -> View -> [forms.py] -> Template)
+2) html 템플릿 구성을 한다. (Template)
+
+<<실습>>
+1. urls.py에 urlpatterns=[path('post/edit/<int:id>', views.edit_post, name ='post-edit' ),,] 추가
+   urls.py에 urlpatterns=[path('post/delete/<int:id>', views.delete_post, name ='post-delete' ),,] 추가
+2. blog/post_form.html 의 데이터를 수정한다. => id 값 추가 수정
+    <h2>{% if id %} Edit {% else %} New {% endif %} Post</h2>
+3. home.html 각 게시물에 편집(EDIT) 링크를 포함하도록 템플릿을 수정
+    <p> <a href="{% url'post-edit' post.id %}"> Edit </a> </p>
+    home.html 각 게시물에 삭제(DELETE) 링크를 포함하도록 템플릿을 수정
+    <p> <a href="{% url'post-delete' post.id %}"> Delete </a> </p>
+4. <a> 태그를 통해 get 방식으로 id값을 넘겨서 페이지 랜더링한 것을 확인하자.
+    Get 방식으로 id 값을 링크된 url로 넘어가는 것 확인 후 내용 변경한 다음 save 버튼을 클릭했을 때
+    Post 방식으로 업데이트 되지 않는다. (현재)
+5. Post 방식의 코드를 추가한다. => views.edit_post : GET / POST
+6. message를 선언하고 활용한다. 각 메시지가 적용되는 views.py 함수에 모듈 추가 후 코드 작성
+    from django.contrib import messages
+7. base.html에 (https://docs.djangoproject.com/en/4.2/ref/contrib/messages/) 코드 활용
+8. delete 랜더링 한다. views.delete_post get/post
+
+
+
+=======================
+로그인/로그아웃
+python manage.py shell / python manage.py dbshell
+
+from django.contrib.auth.models import User
+user=User.objects.create_user('test','test01@example.com','testtest')
+#user.is_superuser=True
+user.is_staff=True
+user.save()
+
+==============================내장 db내용을 확인하고 싶다면 in shell
+import sqlite3
+conn=sqlite3.connect('db.sqlite3')
+cursor=conn.cursor()
+cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
+tables=cursor.fetchall()
+
+
+================================
+<< 사용자 가입 화면 등록 >>
+1. from django.contrib.auth.forms import UserCreationForm의 클래스를 임포트하고 상속받는다.
+   in form.py
+2. urls.py 매핑, views.py 코드 작성
+3. def sign_up(request): get/post(조건 지정해서 저장)
+4. register.html : error 필드 체크 / base.html : register링크 추가
+5. 사용자가 다른 사용자가 작성된 내용을 수정, 삭제 못하게 하고 싶다. blog.views.py
+    from django.contrib.auth.decorators import login_required
+    @login_required 수정, 삭제함수 위에 선언하고 404 요청 지정함수 추가
+
+    ex)
+    @login_required
+    def edit_post(request,id):
+    queryset = Post.objects.filter(author=request.user)# 추가
+    post = get_object_or_404(queryset, id=id)
+    # post = get_object_or_404(Post, id=id) #원본 : URL 패턴과 일치하지 않으면 404로 리다이렉션을 하겠다.
+
+6. home.html : 수정, 삭제 링크를 숨기고 싶다.
+    ex)
+    {% if request.user.is_authenticated and request.user == post.author %}
+    <p>
+        <a href="{% url 'post-edit' post.id %}"> Edit </a>
+        <a href="{% url 'post-delete' post.id %}"> Delete </a>
+    </p>
+    {% endif %}
+
+=================================================================
+<< 자료관리 >>
+dumpdata : 내가 원하는 형식을 데이터 내보내기 => django-admin하면 나오는 명령어 => 확장자 : json, xml, yaml로 정해져 있음
+loaddata
+
+<< 실습 >> data.json -> 모델명, 기본키값, 모델 필드가 나온다.
+python manage.py dumpdata > data.json
+
+
+<< 실습 >> 다른 확장자를 가진 파일로 내보내기 할 때  --format 지정한다
+python manage.py dumpdata > filename --format file_format (docs : Serialization formats)
+python manage.py dumpdata > data.xml --format xml
+
+<< 실습 >> 특정 앱에서 데이터를 내보내기
+python manage.py dumpdata 앱이름 > filename.json
+python manage.py dumpdata blog > blog.json
+python manage.py dumpdata users > users.json
+-테이블 내보내기
+python manage.py dumpdata blog.Post > Post.json
+- --exclude : 이거 뒤에 빼고 내보낸다
+
+<< 데이터 업로드 >>
+<< 실습 >> 데이터 업로드 할 때는 폴더 명이 반도시 존재 => settings에 경로 지정
+python manage.py loaddata data.json
+FIXTURE_DIRS = [
+    '/blog/fixtures',
+    #,,,
+]
+
+
+///////////////////////////////////////////////////////////
+복습 : 새로만들어서 메모 보면서... docs part1 ~ 8까지..
+=>docs : advanced Tutorials, 그냥 advanced 꼭 해서 보기..
+
+모든 것 끝나도 여기에 api도 붙여보고... 조금씩 조금씩 스스로 스킬 만들어보기..
+
+
+
+
+
+
+
+
+
+
+
+
+
