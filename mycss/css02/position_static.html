@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            width: 400px;
+            height: 300px;
+            background-color: aqua;
+            /* position: relative; */
+        }
+
+        .static-eliment{
+            width: 200;
+            height: 150;
+            background-color: red;
+            padding: 20px;
+            color: white;
+            position: static;
+        }
+
+        .relative-eliment{
+            width: 200;
+            height: 100;
+            background-color: red;
+            padding: 20px;
+            color: white;
+            position: relative;
+        }
+
+        .absolute-eliment{
+            width: 200;
+            height: 100;
+            background-color: red;
+            padding: 20px;
+            color: white;
+            position: absolute;
+        }
+
+        .fixed-eliment{
+            width: 200;
+            height: 100;
+            background-color: red;
+            padding: 20px;
+            color: white;
+            position: fixed;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container"> 
+        <div class="static-eliment">
+            static 포지션 요소
+        </div>
+    </div>
+
+    
+    <div class="container">
+        <div class="relative-eliment">
+            relative 포지션 요소
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="absolute-eliment">
+            absolute 포지션 요소
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="fixed-eliment">
+            fixed 포지션 요소
+        </div>
+    </div>
+
+
+</body>
+</html>

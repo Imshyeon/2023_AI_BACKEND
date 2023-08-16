@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ulview</title>
+
+    <style> 
+        h3{
+            color:blue; font-size:medium;
+        }
+        ul{
+            list-style-type:none;
+            padding-left: 20px;
+        }
+        ul.disc li::marker{
+            content:"*";
+            list-style-type: disc;
+            color : red;
+              
+        }ul.circle{
+            list-style-type: circle;
+            color : rgb(32, 176, 145);
+        }
+        ul.square{
+            list-style-type: square;
+            color : rgb(69, 24, 153);
+        }
+
+    </style> <!-- body 부분에 전역 스타일을 적용-->
+             <!-- ul뒤의 disc있는거 찾아서 이렇게 해라~~~ 라는 느낌-->
+             <!-- 한칸 띄우면 이너.. -->
+	</head>	
+	<body>
+		<h3>좋아하는 음식</h3>
+		<ul class="disc">
+			<li>봉골레 파스타</li>
+			<li>갈릭패논 파스타</li>
+			<li>시저 샐러드</li>
+			<li>크램차우더 스프</li>
+		</ul>
+		<ul class="square">
+			<li>봉골레 파스타</li>
+			<li>갈릭패논 파스타</li>
+			<li>시저 샐러드</li>
+			<li>크램차우더스프</li>
+		</ul>
+		<ul class="circle">
+			<li>봉골레 파스타</li>
+			<li>갈릭패논 파스타</li>
+			<li>시저 샐러드</li>
+			<li>크램차우더 스프</li>
+		</ul>
+        <ul >
+			<li>봉골레 파스타</li>
+			<li>갈릭패논 파스타</li>
+			<li>시저 샐러드</li>
+			<li>크램차우더 스프</li>
+		</ul>
+	</body>	
+	</html>

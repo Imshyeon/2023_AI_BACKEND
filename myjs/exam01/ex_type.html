@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .note{
+            width: 70%;
+            min-height: 100px;
+            background-color: lightsteelblue;
+            border: 1px solid black;
+            margin-bottom: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <pre>
+        primitive type : String, Number, Boolean, Null, Undefined 
+            -> 데이터 복사할 때 깊은 복사가 되는 타입
+        reference type : Object 
+            -> 데이터 복사할 때 얕은 복사가 되는 타입(주소 대입)
+
+    </pre>
+    <!-- typeNote 요소를 클릭하는 사용자 이벤트 발생 시 myTest()를 호출 -->
+    <!-- 
+        js에서 html, css를 접근하는 방법
+            1.html element 객체를 자바스크립트로 변환
+            2.dom 트리에 접근할 수 있는 객체 -> document
+    -->
+    <!--
+        <div 복사>
+
+        1. outer 복사 
+            <div class="note" id="typeNote" onclick="myTest()"></div>
+        2. selector 복사
+            #typeNote
+        3. JS경로
+            document.querySelector("#typeNote")
+        4. 스타일
+            width: 50%;
+            min-height: 100px;
+            background-color: lightsteelblue;
+            border: 1px solid black;
+            margin-bottom: 10px;
+        5. Xpath
+            //*[@id="typeNote"]
+     -->
+    <div class="note" id="typeNote" onclick="myTest()"></div>
+    <script>
+        function myTest(){
+            let typeNote = document.querySelector("#typeNote"); //id로 식별..
+            console.dir(typeNote);
+            // console.log(typeNote);
+            typeNote.innerHTML="";
+            typeNote.innerHTML+="<b><i> name : 홍길동 </i><b>" + typeof(typeNote) + "<br>";
+            typeNote.innerHTML+="<i> name : 홍길동 </i><br>"; 
+            typeNote.innerHTML+="<i> addr : 서울 </i><br>"; 
+        }
+            
+    </script>
+
+    <div class="note" id="AA" onclick="myTestAA()"></div>
+    <div class="note" id="BB" onclick="myTestBB()"></div>
+    <div class="note" id="CC" onclick="myTestCC()"></div>
+
+    <script>
+        function myTestAA(){
+            let AA = document.querySelector("#AA"); //getElementById 보다는 이걸 쓰는게 낫다..
+            console.dir(AA);
+            AA.innerHTML = "<b> AA 영역 <b><br>"
+            AA.innerText += "안뇽"
+        }
+    </script>
+
+    <pre>
+        querySelector : css 스타일 기반 요소를 선택하는 함수 - > 첫번째 요소
+                        ex. let BB = document.querySelector("#BB"); => id = BB
+                                     document.querySelector(".note"); => class=".note"
+
+        getElementById : id만 선택하는 함수, .note를 모른다!
+                        ex. document.getElementById("BB"); => id = BB
+    </pre>
+    <script>
+        function myTestBB(){
+            let BB = document.querySelector("#BB");
+            console.log(BB);
+            BB.innerHTML = "<b> BB 영역 <b>"
+
+            let BB_id = document.getElementById("BB");
+            console.log(BB_id); //console.dir(BB)의 리턴값과 같다. getElementId로 해도 같다..
+        }
+    </script>
+
+    <script>
+        function myTestCC(){
+            let CC = document.querySelector("#CC"); //getElementById 보다는 이걸 쓰는게 낫다..
+            console.dir(CC);
+            CC.innerHTML = "<b> CC 영역 <b><br>"
+            let a=5;
+            let b=10;
+            // let result = "the sum of "+ a +" and "+ b + " is " + (a+b);
+            // ECMAScript 2015(ES6) -> 템플릿 리터럴[template literals] ->  최신브라우저 + Node.js 
+            
+            let result = `the sum of ${a} and ${b} is ${a + b}`;  // let result = "the sum of "+ a +" and "+ b + " is " + (a+b);
+            CC.innerHTML += result;
+            console.log(result);
+            let my_name = "홍길동";
+            let greeting = `hello, ${my_name}`;
+            console.log(greeting);
+        }
+</script>
+<script src="ex_type.js"></script>
+</body>
+</html>

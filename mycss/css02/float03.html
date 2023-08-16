@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width : 200px;
+            height: 200px;
+            background-color: blue;
+            border: 1px solid black;
+            margin-bottom: 10px;
+            margin-left: 10px;
+            float:right;
+        }
+
+        .clear{
+            clear : both;
+            /* 플로팅된 상자 주위에 다음  요소가 매핑되는 것을 방지하기 위해 clear를 사용*/
+        }
+        
+    </style>
+</head>
+<body>
+    
+    <!-- clear는 플로트가 다른 요소를 방해하지 않도록 하는 것? -->
+    <div class="box"> normal Box1  </div>
+    
+    <div class="box"> normal Box2  </div>
+    <div class="clear"></div> 
+
+    <div class="box"> normal Box3  </div>
+    <div class="clear"></div> 
+    <div class="box"> normal Box4  </div>
+</body>
+</html>

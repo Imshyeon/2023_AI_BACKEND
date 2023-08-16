@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width : 200px;
+            height: 200px;
+            background-color: blue;
+            border: 1px solid black;
+            margin-bottom: 10px;
+        }
+        
+        .left{
+            float: left;
+            margin-right:10px;
+        }
+
+        .right{
+            float: right;
+            margin-left:10px;
+        }
+
+        
+        /* float를 지우고나서 후속 콘텐츠가 float의 속성 영향을 받지 않도록 지정하는 클래스 */
+        .clearfix::after{
+            content: " ";
+            display: table;
+            clear: right;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box left" > Left Float </div>
+    <div class="box right" > Right Float </div>
+    <div class="clearfix"></div>
+    <div class="box" > Normal Box1 </div>
+    <div class="clearfix"></div>
+    
+    <div class="box" > Normal Box2 </div>
+    
+    <div class="box" > Normal Box3 </div>
+</body>
+</html>

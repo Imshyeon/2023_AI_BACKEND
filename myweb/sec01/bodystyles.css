@@ -1,0 +1,18 @@
+body{
+    background-color: pink;
+    color:blue;
+
+}
+
+a:link{
+    color:red;
+}
+
+a:vlink{
+    color:green;
+}
+
+a:alink{
+    color:gray;
+}
+

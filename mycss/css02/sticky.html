@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">    
+    <style>
+        body {
+            height: 2000px;           
+            margin: 0;
+            padding: 0;
+        }
+
+        .fixed {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: red;
+            color: white;
+            padding: 10px;
+        }
+
+        .sticky {
+            position: sticky;
+            top: 100px;
+            background-color: blue;
+            color: white;
+            padding: 10px;
+        }
+
+        .content {
+            height: 1500px;
+            background-color: lightgray;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="fixed">
+        fixed
+    </div>
+
+    <div class="content">
+        <h1>sticky 스크롤 </h1>
+        <div class="sticky">
+             sticky 
+        </div>
+    </div>
+</body>
+
+</html>

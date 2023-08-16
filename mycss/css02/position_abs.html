@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 상대적 위치 지정이다 */
+        .container{
+            position: relative;
+            width: 400px;
+            height: 300px;
+            background-color: aqua;
+        }
+
+        /* 컨테이너 내부에 절대 위치 지정 */
+        .absolute-eliment{
+            position: absolute;
+            top:50px;
+            left: 100px;
+            width: 200px;
+            height: 150px;
+            background-color: red;
+            padding: 20px;
+            color: white;
+            
+        }
+
+        .static-eliment{
+            position: static;
+            top:50px;
+            left: 100px;
+            width: 200px;
+            height: 150px;
+            background-color: red;
+            padding: 20px;
+            color: white;
+            
+        }
+
+      
+    </style>
+</head>
+<body>
+    <div class="container"> 
+        <div class="static-eliment">
+            static 포지션 요소
+        </div>
+    </div>
+
+    <div class="container"> 
+        <div class="absolute-eliment">
+            absolute 포지션 요소
+        </div>
+    </div>
+
+</body>
+</html>

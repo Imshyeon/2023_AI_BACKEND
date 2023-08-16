@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입 폼1</title>
+    <style>
+        body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(252, 244, 236);
+            }
+h2 {
+    text-align: center;
+    color: rgb(80, 79, 79);
+}
+form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: rgb(241, 224, 206);
+    border: none;
+    border-radius: 10px;
+}
+.form-group{
+    margin-bottom: 30px;
+}
+.form-group.phone input[label="text"]{
+    display: flex;
+    align-items: center;
+}
+.form-group label{
+    display: block;
+    font-weight: bold;
+    padding-bottom: 10px;
+    color: black;
+}
+.form-group input[type="text"]::placeholder,
+.form-group input[type="password"]::placeholder,
+.form-group textarea::placeholder
+{
+    color: #999999;
+}
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group textarea,
+.form-group select{
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+}
+.form-group.phone label {
+    display: block;
+    width: 100px;
+  }
+.form-group.phone input[type="text"] {
+    display: inline-block;
+    width: 70px;
+  }
+.form-group input[type="radio"],
+.form-group input[type="checkbox"]{
+    margin-right: 5px;
+}
+.form-group input[type="radio"]:checked,
+.form-group input[type="checkbox"]:checked{
+    accent-color: brown;
+}
+.form-group textarea {
+    resize: vertical;
+}
+.form-group input[type="submit"],
+.form-group input[type="reset"]{
+    width: 100px;
+    padding: 10px;
+    background-color: rgb(206, 171, 135);
+    font-weight: bold;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+    </style>
+</head>
+<body>
+    <h2>회원 정보 입력</h2>
+    <form action="Result.html" method="post">
+        <div class="form-group">
+            <label for="id">아이디</label>
+            <input type="text" id="id" name="id" placeholder="아이디 입력">
+        </div>
+        <div class="form-group">
+            <label for="pw">비밀번호</label>
+            <input type="password" id="pw" name="pw" placeholder="비밀번호 입력">
+        </div>
+        <div class="form-group">
+            <label for="name">이름</label>
+            <input type="text" id="name" name="name" placeholder="이름 입력">
+        </div>
+        <div class="form-group phone">
+            <label for="tel">전화번호</label>
+            <input type="text" id="tel" name="tel" size="3" value="02">
+            -
+            <input type="text" id="tel2" name="tel2" size="4">
+            -
+            <input type="text" id="tel3" name="tel3" size="4">
+        </div>
+        <div class="form-group">
+            <label for="job">직업</label>
+            <select id="job" name="job">
+                <option selected>자산관리사</option>
+                <option>프로그래머</option>
+                <option>회사원</option>
+                <option>기타</option>
+            </select>
+        </div>
+        <div class="form-group" id="s">
+            <label>성별</label>
+            <label for="male">
+            <input type="radio" id="male" name="sex" value="Male">남자
+            </label>
+            <label for="female">
+            <input type="radio" id="female" name="sex" value="Female">여자
+            </label>
+        </div>
+        <div class="form-group" id="h">
+            <label>취미</label>
+            <label for="travel">
+            <input type="checkbox" id="travel" name="hobby" value="travel">여행
+            </label>
+            <label for="ski">
+            <input type="checkbox" id="ski" name="hobby" value="ski">스키
+            </label>
+            <label for="mountaineering">
+            <input type="checkbox" id="mountaineering" name="hobby" value="mountaineering">등산
+            </label>
+            <label for="shopping">
+            <input type="checkbox" id="shopping" name="hobby" value="shopping">쇼핑
+            </label>
+        </div>
+        <div class="form-group">
+            <label for="intro">자기 소개</label>
+            <textarea id="intro" name="intro" rows="10" cols="50" placeholder="자기소개를 간략하게 글로 쓰세요"></textarea>
+        </div>
+        <div class="form-group button" style="text-align: center;">
+            <input type="submit" value="등록" style="text-align: center;">
+            <input type="reset" value="취소" style="text-align: center;">
+        </div>
+    </form>
+    <script src="suu.js"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+
+<mybutton02.css>
+
+form .button-container {
+     display: flex;
+     justify-content: space-between;  // display : flex가 있으면, 어떤 게 우선순위인지 설정해줘야 함.
+}
+
+
+1. display : 웹 페이지에 표시되는 방법
+    - block : 부모 container의 너비를 꽉 채움. width와 height의 속성 무시
+
+    - inline : 기존의 width와 height 준해서 채운다. width와 height이 없으면부모에 맞춤.
+
+    - inline-block : width, height 준수해서 채우면서 부모 container에 의존(꽉 채움)
+
+    - none : 해당 요소 페이지에 표시되지 않는다. 공간을 차지하지 않는다.
+
+     - flex : flex 지정된 요소는 container가 되고 그 안에 들어가있는 직계 자식은 flex 항목이 된다.
+             ex. div안에 있는 것을 유연하게 만들어서 채우겠다.
+    
+    - grid : 행과 열을 이용한 2차원으로 직계자식을 grid 항목으로 지정한다.
+
+
+2. justify-content : flex 항목을 공간을 계산하면서 정렬하는 속성 (축을 만듦)
+    - flex-start : container의 기본 축(왼쪽) => default
+
+    - flex-end : flex 항목을 container의 기본 축 끝부터 정렬(반대로)
+
+    - center : 가운데 정렬
+
+    - space-between : flex item의 사이를 고르게 분배한다.
+                      첫번째 항목의 주축의 시작이다.
+        
+    - space-around : flex item들의 주변공간을 고르게 분배한다.
+
+    - stretch : item 정렬에 따라 항목을 채운다.
+                기본축을 먼저 만들어 놓고, 항목이 추가되면 유동적으로 늘렸다가 줄였다가 사용함.
+                align-items와 같이 사용
+
+<mybutton02.css>
+
+form input[type="button"],
+   form input[type="submit"] {
+     flex: 1;
+     /* class와 연결되는 flex. */
+     margin-right: 10px;
+     padding: 10px;
+     background-color: #4CAF50;
+     color: #ffffff;
+     border: none;
+     border-radius: 4px;
+     cursor: pointer;
+   }
+
+
+3. flex 대상항목에 flex : 1;을 준 경우.
+    공간을 가득 채우겠다.
+    

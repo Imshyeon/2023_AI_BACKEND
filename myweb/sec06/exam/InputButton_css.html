@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="mybutton02.css">
+
+    <!-- <style>
+        @import url();
+    </style>-->
+
+    <!-- import는 만들어온거 가져올때. link는 만들면서 확인할때 -->
+
+
+</head>
+<body>
+    <!-- create button (주석 단축기 ctrl+/ ..in vs code)-->
+    <form action="inputCheck.html" name="myform" > <!-- form의 데이터는 get 방식이 기본이다. -->
+                                                    <!-- form의 name을 준 경우. (form이 여러개일 수 있으니까)-->
+        <!-- for속성과 id속성 연결 ///// for = id -->
+        <label for = "myid"> ID : </label>
+        <input type="id"      id="myid"   name="myid" placeholder="id"> <br>  
+        <!-- placeholder는 가이드, 따라서 value로 넘어가지 않는다. -->
+        
+        <label for = "mypw"> PW : </label>
+        <input type="password" id="mypw" name="mypw" placeholder="password"> <br>  
+
+        <div class="button-container">
+            <input type="button" value="button">
+            <input type="submit" value="submit">
+        </div>
+        <!-- 
+            mybutton02.css 의 적용을 위한 div..
+            mybutton.css할려면 div를 없애면 됨.
+            원하는 부분을 div로 영역으로 묶음. 
+            그 두 개 묶은 부분의 스타일은 class="button-containter"
+            class = 속성 + 기능
+        -->
+
+
+        <!-- 
+            submit은 폼의 액션이 가지고 있는 곳으로 데이터 요청
+            button은 서버 요청(request 기능 없음)안함
+            submit은 서버 요청(request 기능 있음)함 
+        -->
+
+        <!-- summit을 클릭하면 http://127.0.0.1:5500/sec06/InputCheck.html?myid=**&mypw=**  => get 방식 -->
+        <!-- if)http://127.0.0.1:5500/sec06/InputCheck.html  => post 방식 -->
+
+    </form>
+</body>
+</html>

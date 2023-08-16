@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입 폼</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #8eb4ba;
+        }
+
+        h2 {
+            text-align: center;
+            margin: 3% 40% 2% 40%;
+            padding: 1%;
+            color: white;
+            border:3px solid rgb(0, 0, 0);
+            background-color: black;
+            border-radius: 30px;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border: 1px solid #dddddd;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        .form-group label {
+            width: 55px;
+            text-align: left;
+            font-weight: bold;
+            white-space: nowrap;
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="password"],
+        .form-group select {
+            width: 2.5cm;
+        }
+
+        .form-group textarea {
+            width: 30em;
+            padding: 10px;
+            border: 2px solid #cccccc;
+            border-radius: 4px;
+            resize: vertical;
+            display: grid;
+        }
+
+        .form-group input[type="submit"],
+        .form-group input[type="reset"] {
+            width: 100px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>회원 정보 입력</h2>
+    <form action="#" method="post">
+        <div class="form-group">
+            <label for="id">아이디</label>
+            <input type="text" id="id" name="id">
+        </div>
+        <div class="form-group">
+            <label for="pw">비밀번호</label>
+            <input type="password" id="pw" name="pw">
+        </div>
+        <div class="form-group">
+            <label for="name">이름</label>
+            <input type="text" id="name" name="name">
+        </div>
+        <div class="form-group">
+            <label for="tel">전화번호</label>
+            <input type="text" id="tel" name="tel" value="02">-
+            <input type="text" id="tel2" name="tel2">-
+            <input type="text" id="tel3" name="tel3">
+        </div>
+        <div class="form-group">
+            <label for="job">직업</label>
+            <select id="job" name="job">
+                <option selected>자산관리사</option>
+                <option>프로그래머</option>
+                <option>회사원</option>
+                <option>기타</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="sex">성별</label>
+            <input type="radio" id="male" name="sex" value="Male">
+            <label for="male">남자</label>
+            <input type="radio" id="female" name="sex" value="Female">
+            <label for="female">여자</label>
+        </div>
+        <div class="form-group">
+            <label>취미</label>
+            <input type="checkbox" id="travel" name="hobby" value="travel">
+            <label for="travel">여행</label>
+            <input type="checkbox" id="ski" name="hobby" value="ski">
+            <label for="ski">스키</label>
+            <input type="checkbox" id="mountaineering" name="hobby" value="mountaineering">
+            <label for="mountaineering">등산</label>
+            <input type="checkbox" id="shopping" name="hobby" value="shopping">
+            <label for="shopping">쇼핑</label>
+        </div>
+        <div class="form-group">
+            <label for="intro">자기 소개</label>
+            <textarea id="intro" name="intro" rows="10" cols="50">아이디, 비밀번호, 이름, 전화번호 칸에 값을 입력하고 등록 버튼을 누르면 자기 소개란에 입력값이 출력됩니다.</textarea>
+        </div>
+        <div class="form-group" align="center">
+            <input type="submit" value="등록">
+            <input type="reset" value="취소">
+        </div>
+    </form>
+    <script src="exam.js"></script>
+</body>
+
+</html>

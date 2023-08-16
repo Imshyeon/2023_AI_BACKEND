@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>position </title>
+<style type="text/css">
+    p.sample {
+        height: 50px;
+        background-color: #00ff00;
+        font-weight: bold;
+        position: relative
+    }
+
+    span.sample1 {
+        color: #ff0000;
+        position: static;
+        top: 10px;
+        left: 10px
+    }
+
+    span.sample2 {
+        color: #ff0000;
+        position: relative;
+        top: 10px;
+        left: 10px
+    }
+
+    span.sample3 {
+        color: #ff0000;
+        position: absolute;
+        top: 10px;
+        left: 10px
+    }
+
+    span.sample4 {
+        color: #ff0000;
+        position: fixed;
+        top: 10px;
+        left: 10px
+    }
+
+    span.sample5 {
+        color: #ff0000;
+        position: sticky;
+        /* 사용자 스크롤 위치 기준으로 배치 */
+        top: 10px;
+        left: 10px
+    }
+
+</style>
+</head>
+
+<body>
+<!-- static : 부모-자식 영향 x // rela : 밖의 아우터와 상대적 위치를 잡아서 보임. -->
+<!-- static : top, right, bottom, left 적용 안됨/fixed는 적용됨 -->
+<!-- relative 전체 창의 왼쪽이 기준.. -->
+<!-- fixed는 스크롤 되는 위치를 사용할 때 사용.. -->
+<!-- static : 정적으로 배치 // rela : top, right, bottom, left가 상대적// fixed : 고정. 해당 위치에 고정된 상대로 위치. 페이지 전체 기준으로 걍 고정 -->
+    <p class="sample"> position : static <span class="sample1"> static의 경우보기 </span> </p>
+    <p class="sample"> position : relative <span class="sample2"> relative의 경우보기 </span> </p>
+    <p class="sample"> position : absolute <span class="sample3"> absolute의 경우보기 </span> </p>
+    <p class="sample"> position : fixed <span class="sample4"> fixed의 경우보기 </span> </p>
+    <p class="sample"> position : sticky <span class="sample5"> sticky의 경우보기 </span> </p>
+
+</body>
+
+</html>

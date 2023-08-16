@@ -1,0 +1,12 @@
+#nav_menu a {
+	height: 16px;
+	color: #f1f1f1;
+	font-family: arial;
+	font-size: 20px;
+	padding: 0 10px 0 10px;
+	text-decoration: none;
+}
+
+
+
+

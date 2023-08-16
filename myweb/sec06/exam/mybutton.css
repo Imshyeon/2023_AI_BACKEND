@@ -1,0 +1,63 @@
+body{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-color: bisque;
+
+}
+/* form : 폼길이, margin, padding, background-color, border: 두께, 유형, 색상*/
+form{
+    max-width: 300px;
+    margin : 15% auto;
+    padding : 30px;
+    background-color: blanchedalmond;
+    border:2px dashed #ffffff;
+
+}
+
+/* form input 입력상자: 길이, margin, padding, border: 두께, 유형, 색상 , 상자 둥글게*/
+form input[type="id"],
+form input[type="password"]{
+    width : 100%;
+    padding : 5px;
+    margin-bottom : 10px;
+    border : 1px solid black;
+    border-radius: 5px;
+
+}
+/* form 중의 input 안 type=**이다~ */
+
+/* form input 버튼 : 길이, padding, background-color, color, border, 상자 둥글게, 커서*/
+form input[type="button"],
+form input[type="submit"]{
+    width : 100%;
+    padding : 5px;
+    background-color: #4c4c4c;
+    color: white;
+    border : 1px solid black;
+    border-radius: 5px;
+    margin:3px;
+    cursor: pointer;
+    font-size: smaller;
+
+}
+
+/* placeholder 색깔 */
+/* 
+    <선택자 in css>
+    단일콜론 ':' -> 의사클래스(표현), 즉 상태나 동작. 함수로 움직이는 것들은 동작. 이 동작을 구현하는 것들
+    다중콜론'::' -> 의사 요소. 요소는 값. 따라서 속성 ex)placeholder는 정적이니까.. 막 바뀌는 애들이 아님.
+
+*/
+
+form input[type="id"]::placeholder,
+form input[type="password"]::placeholder{
+    color: #515276;
+
+}
+/* 하위 속성은 :: 으로!! '::' 은 귀속 연산자로 ~의 것. */
+/* '.'은 주소 연산자 */
+
+/* css로 기능 제어(: 이용) */
+form input[type="button"]:hover,
+form input[type="submit"]:hover{
+    color : cyan;
+}

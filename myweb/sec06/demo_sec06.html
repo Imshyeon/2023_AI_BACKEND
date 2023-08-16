@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입 폼</title>
+    <style>
+        body {
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            background-color: #cccccc;
+        }
+
+        h2 {
+            text-align: center;
+            color: azure;
+            font-weight: lighter;
+            font-size: xx-large;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ede6e8;
+            border: 3px dashed #dddddd;
+        }
+
+        table {
+            width: 90%;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-weight: lighter;
+        }
+
+        td {
+            padding: 1px;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        textarea {
+            width: 100%;
+            padding: 7px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 6px;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 15px;
+            border: 1px solid #cccccc;
+            border-radius: 65px;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-bottom: 15px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            width: 100px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <h2>SIGN IN</h2>
+    <form action="Result.html" method="post">
+        <table>
+            <tr>
+                <td>ID</td>
+                <td><input type="text" name="id"></td>
+            </tr>
+            <tr>
+                <td>PW</td>
+                <td><input type="password" name="pw"></td>
+            </tr>
+            <tr>
+                <td>NAME</td>
+                <td><input type="text" name="name"></td>
+            </tr>
+            <tr>
+                <td>TELE</td>
+                <td>
+                    <input type="text" name="tel" size="3" value="02">-
+                    <input type="text" name="tel2" size="4">-
+                    <input name="tel3" size="4">
+                </td>
+            </tr>
+
+                <tr>
+                    <td>JOB</td>
+                    <td>
+                        <select name="job">
+                            <option selected>자산관리사</option>
+                            <option>프로그래머</option>
+                            <option>회사원</option>
+                            <option>기타</option>
+                        </select>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>SEX</td>
+                    <td>
+                            <input type="radio" name="sex" value="Male"> 남자
+                            <input type="radio" name="sex" value="Female"> 여자
+
+                    </td>
+                </tr>
+                
+
+            <tr>
+                <td>HOBBY</td>
+                <td>
+                    <input type="checkbox" name="hobby" value="travel"> travel
+
+                </td>
+                </tr>
+                </table>
+                </form>
+                </body>
+                </html>
