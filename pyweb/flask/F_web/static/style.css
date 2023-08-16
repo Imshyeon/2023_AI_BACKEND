@@ -1,0 +1,23 @@
+div {
+    width: 900px;
+    text-align: center;
+}
+
+p {
+    display: inline-block;
+    width: 80px;
+    text-align: center;
+    color : gray;
+}
+.catdog{
+    font-weight: bold;
+    color: red;
+}
+
+.cat {
+    color: orange;
+}
+
+.dog {
+    color: blue
+}

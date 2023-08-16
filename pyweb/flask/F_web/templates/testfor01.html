@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel ="stylesheet" href = "{{ url_for('static', filename='style.css') }}">
+    <title>Testfor</title>
+</head>
+<body>
+<!--  15의 배수는 catdog, 5의 배수는 cat, 3의 배수는 dog, 나머지는 그냥 i-->
+
+<div>
+    {% set cat=cat.capitalize() %}
+    {% set dog=dog|capitalize %}
+    {% set catdog = cat + dog %}
+<h1> catdog 클래스 적용 </h1>
+  {% for i in range(1,101) %}
+        {% if i%15 == 0 %}
+            <p class="catdog">{{catdog}}</p>
+        {% elif i%5 == 0 %}
+            <p class="cat">{{cat}}</p>
+        {% elif i%3 == 0 %}
+            <p class="dog">{{dog}}</p>
+        {% else %}
+            <p> {{ i }} </p>
+        {% endif %}
+        {% if i % 10 == 0 %}
+            <br>
+        {% endif %}
+  {% endfor %}
+</div>
+</body>
+</html>
