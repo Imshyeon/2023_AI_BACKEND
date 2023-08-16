@@ -1,0 +1,7 @@
+{"_id":{"$oid":"64cb31699c8e38e7ff5c0704"},"name":"ccc","kor":80,"eng":55,"mat":67,"test":"midterm"}
+{"_id":{"$oid":"64cb31699c8e38e7ff5c0707"},"name":"fff","kor":100,"eng":69,"mat":89,"test":"midterm"}
+{"_id":{"$oid":"64cb31699c8e38e7ff5c0705"},"name":"ddd","kor":70,"eng":69,"mat":89,"test":"midterm"}
+{"_id":{"$oid":"64cb31699c8e38e7ff5c0703"},"name":"bbb","kor":100,"eng":100,"mat":76,"test":"final"}
+{"_id":{"$oid":"64cb31699c8e38e7ff5c0702"},"name":"aaa","kor":90,"eng":80,"mat":98,"test":"midterm"}
+{"_id":{"$oid":"64cb31699c8e38e7ff5c0706"},"name":"eee","kor":60,"eng":80,"mat":78,"test":"final"}
+{"_id":{"$oid":"64cb31699c8e38e7ff5c0708"},"name":"ggg","kor":75,"eng":100,"mat":100,"test":"final"}

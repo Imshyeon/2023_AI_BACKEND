@@ -1,0 +1,14 @@
+1. 신문사
+
+<a href="https://www.donga.com/news/Opinion/article/all/20230719/120321771/1?ref=main"
+data-evnt-ctg="page : 동아|홈|Desktop"
+data-evnt-act="area: 지금 뜨는 뉴스"
+data-evnt-lbl="areaNum: 1"
+data-event_name="click_event"
+data-ep_button_name="‘무정부 상태’ 오송 지하차도, 이태원 참사와 뭐가 다른가"
+data-ep_button_area="지금 뜨는 뉴스"
+data-ep_button_category="메인"
+data-ep_contentdata_content_id="120321771"
+data-ep_contentdata_content_title="[김순덕 칼럼]‘무정부 상태’ 오송 지하차도, 이태원 참사와 뭐가 다른가"
+data-ep_contentdata_content_order="1"
+data-ep_button_area2="메인기사">‘무정부 상태’ 오송 지하차도, <br>이태원 참사와 뭐가 다른가</a>

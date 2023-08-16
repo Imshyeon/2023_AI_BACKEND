@@ -1,0 +1,7 @@
+CREATE DEFINER=`root`@`localhost` PROCEDURE `get_exam12`()
+BEGIN
+    SELECT ENAME, DNAME, JOB
+	FROM Emp
+	INNER JOIN DEPT USING(DEPTNO)
+	WHERE sal > (SELECT AVG(sal) FROM Emp WHERE  deptno = Emp.deptno); 
+END
