@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block head %}
+    <title>Values.html</title>
+{% endblock %}
+
+{% block content %}
+<h1> values.html </h1>
+<p1> 키값을 출력해보자.</p1>
+<ul>
+  {% for key in user_data %}
+  <li> {{ key }} </li>
+  {% endfor %}
+</ul>
+
+ <p> 이름 : {{user_data['name']}} </p>
+ <p> 나이 : {{user_data['age']}} </p>
+ <p> 성별 : {{user_data['gender']}} </p>
+ <p> 이메일 : {{user_data['e-mail']}} </p>
+ <p> 메시지 : {{user_data['msg']}} </p>
+
+{% endblock %}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>User List</h1>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Email</th>
+                    <th>Message</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user['id'] }}</td>
+                    <td>{{ user['name'] }}</td>
+                    <td>{{ user['age'] }}</td>
+                    <td>{{ user['gender'] }}</td>
+                    <td>{{ user['email'] }}</td>
+                    <td>{{ user['message'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+         <a href="{{ url_for('index') }}" class="btn btn-primary">Back to Index</a>
+    </div>
+    </div>
+</body>
+</html>

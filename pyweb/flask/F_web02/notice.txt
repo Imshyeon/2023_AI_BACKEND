@@ -1,0 +1,17 @@
+1. sqlite
+    app_db_sqlite
+    -----
+    db.users.py
+    app_db2_sqlite.txt
+
+2. flask_aqalchemy
+    db.myuser.py
+    app.py
+
+        select * from 테이블명      == User.query.all() , User.query.get(조건)
+        insert into 테이블명 values (,,,)
+        update 테이블명 set 변수 = 값,,
+
+
+        db = SQLAlchemy 객체 생성 -> class로 테이블 CRUD할 멤버를 기준으로 model을 생성(class User(db.Model))
+        -> db.create_all() -> db.session.add(), db.session.delete(), 수정은 모델 -> db.session.commit()set FLASK_APP=pybo

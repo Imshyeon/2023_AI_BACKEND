@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>신규 가입</title>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5"> <!-- Increased margin-top -->
+    <h1 class="text-center">신규 가입</h1>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-warning mt-3" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <form action="{{ url_for('user.register') }}" method="post" class="mt-4">
+        <div class="form-group row">
+            <label for="user" class="col-sm-2 col-form-label">계정</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="username" id="user" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="pass" class="col-sm-2 col-form-label">비번</label>
+            <div class="col-sm-10">
+                <input type="password" class="form-control" name="password" id="pass" required minlength="4">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">확인</button>
+    </form>
+</div>
+{% endblock %}

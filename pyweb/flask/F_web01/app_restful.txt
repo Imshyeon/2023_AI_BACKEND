@@ -1,0 +1,69 @@
+from flask import Flask
+from flask_restful import Resource, Api
+
+app = Flask(__name__)
+api = Api(app)  # 서비스 객체를 생성(api 생성)
+
+class HelloWorld(Resource): #웹서비스 대상
+    def get(self):
+        return {'hello': 'world'}
+
+class MyWorld(Resource): #웹서비스 대상
+    def get(self):
+        return {'hello02': 'zoe in London'}
+
+
+class World(Resource):
+    def __init__(self):
+        self.hello_world = HelloWorld()
+        self.my_world = MyWorld()
+
+    def get(self):
+        return {
+            'hello' : self.hello_world.get()['hello'],
+            'hello02' : self.my_world.get()['hello02']
+        }
+
+# api.add_resource(HelloWorld, '/')
+# api.add_resource(MyWorld, '/')
+# api.add_resource(World, '/')
+
+
+'''
+class Todo1(Resource):
+    def get(self):
+        # Default to 200 OK
+        return {'task': 'Hello world'}
+
+class Todo2(Resource):
+    def get(self):
+        # Set the response code to 201
+        return {'task': 'Hello world'}, 201
+
+class Todo3(Resource):
+    def get(self):
+        # Set the response code to 201 and return custom headers
+        return {'task': 'Hello world'}, 201, {'Etag': 'some-opaque-string'}
+
+api.add_resource(Todo3, '/')
+'''
+
+# ====================================================
+
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+
+
+
+
+
+
+
+
+
+
+
+

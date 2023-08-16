@@ -1,0 +1,70 @@
+from flask import Flask
+from flask import render_template, request, redirect, url_for, g # g : global 변수
+import sqlite3
+from db import users
+
+app = Flask(__name__)
+
+#플라스크 어플리케이션의 환경설정 중 db 계정 및 경로
+app.config.from_mapping(
+    SECRET_KEY = "dev",
+    DATABASE = "web02.db"   #db경로
+)
+
+#1. db 생성
+def get_db():
+    if "db" not in g: #db속성이 있는지 확인
+        g.db=sqlite3.connect(
+            app.config["DATABASE"],
+            detect_types=sqlite3.PARSE_DECLTYPES    #데이터베이스 객체 생성이 없을 경우 생성되는 속성
+        )
+        g.db.row_factory=sqlite3.Row    #커서가 튜플타입으로 행을 관리한다.
+    return g.db # db 생성된 것을 리턴하겠다.
+
+#2. 테이블 생성  ------- 테이블 생성 따로, db 생성 따로
+def init_db():
+    db=get_db()
+    with app.open_resource("schema.sql",mode="r") as f:
+        db.cursor().executescript(f.read()) #sql 읽어서 실행시킨다.
+    db.commit() #저장
+
+'''
+#3. 커맨드 실행
+@app.cli.command("init-db")
+def init_db_command():
+    init_db()
+'''
+
+@app.route("/users")
+def show_users():
+    db=get_db()
+    cur=db.execute("SELECT * FROM users")
+    users=cur.fetchall()
+    return render_template("users_fordb1.html",users=users)
+
+
+@app.route("/add_user", methods = ["GET", "POST"])
+def add_user():
+    if request.method == 'POST':
+        name = request.form['name']
+        age = request.form['age']
+        gender = request.form['gender']
+        email = request.form['email']
+        message = request.form['message']
+        db=get_db()
+        db.execute(
+            "INSERT INTO users (name, age, gender, email, message) VALUES (?,?,?,?,?)",
+            (name, age, gender, email, message)
+        )
+        db.commit()
+        return redirect(url_for("show_users"))
+    return render_template("add_user.html")
+
+
+@app.route("/")
+def index():
+    return render_template("index.html")
+
+
+if __name__ == '__main__':
+    app.run()

@@ -1,0 +1,18 @@
+h1 {
+    text-align: center;
+}
+
+form {
+    margin: 0 auto;
+    width: 400px;
+    padding: 20px;
+    border: 1px solid;
+}
+
+#user_age {
+    width: 40px;
+}
+
+.e-mail {
+    margin-bottom: 7px;
+}

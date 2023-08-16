@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% for user in online_users %}
+            <tr>
+                <td>NAME : {{ user.name }}</td>
+                <td>KOR : {{ user.kor }}</td>
+                <td>ENG : {{ user.eng }}</td>
+                <td>MAT : {{ user.mat }}</td>
+                <br>
+            </tr>
+    {% endfor %}
+</body>
+</html>
