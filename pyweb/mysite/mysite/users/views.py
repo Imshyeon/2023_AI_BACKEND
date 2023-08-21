@@ -28,7 +28,7 @@ def sign_in(request):
 def sign_out(request):
     logout(request)
     messages.success(request, f"You've been logged out")     
-    return redirect('login')       
+    return redirect('posts')       
 
 
 # =========================== 회원등록 ===========================
@@ -47,3 +47,7 @@ def sign_up(request,false=None):
             return redirect('posts')
         else : 
             return render(request,'users/register.html',{'form':form})
+        
+#=========================== 계정 찾기 ===========================
+def find_me(request):
+    pass
